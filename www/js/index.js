@@ -70,3 +70,10 @@ document.getElementById("setLocalStorage").addEventListener("click", setLocalSto
 document.getElementById("showLocalStorage").addEventListener("click", showLocalStorage);
 document.getElementById("removeProjectFromLocalStorage").addEventListener("click", removeProjectFromLocalStorage);
 document.getElementById("getLocalStorageByKey").addEventListener("click", getLocalStorageByKey);
+
+// events
+
+function pressVolumeUpButton() {
+    alert('Volume Up Button is pressed!!');
+}
+document.addEventListener("volumeupbutton", pressVolumeUpButton, false);
