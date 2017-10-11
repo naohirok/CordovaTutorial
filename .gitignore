@@ -1,0 +1,6 @@
+# cordova gitignore
+.DS_Store
+node_modules/
+platforms/
+plugins/
+
