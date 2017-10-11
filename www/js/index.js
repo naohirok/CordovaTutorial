@@ -28,6 +28,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        window.addEventListener('batterystatus', onBatteryStatus, false);
     },
 
     // Update DOM on a Received Event
@@ -83,3 +84,9 @@ function pressBackButton(e) {
     alert('Back Button is Pressed !!');
 }
 document.addEventListener("backbutton", pressBackButton, false);
+
+// battery
+
+function onBatteryStatus(info) {
+    alert("BATTERY STATUS:  Level: " + info.level + " isPlugged: " + info.isPlugged);
+}
