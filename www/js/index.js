@@ -77,3 +77,9 @@ function pressVolumeUpButton() {
     alert('Volume Up Button is pressed!!');
 }
 document.addEventListener("volumeupbutton", pressVolumeUpButton, false);
+
+function pressBackButton(e) {
+    e.preventDefault();
+    alert('Back Button is Pressed !!');
+}
+document.addEventListener("backbutton", pressBackButton, false);
