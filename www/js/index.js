@@ -130,3 +130,67 @@ function cameraGetPicture() {
 }
 
 document.getElementById("cameraGetPicture").addEventListener("click", cameraGetPicture);
+
+// contact
+
+function createContact() {
+    var myContact = navigator.contacts.create({
+        "displayName": "Test User"
+    });
+    myContact.save(contactSuccess, contactError);
+    
+    function contactSuccess() {
+        alert("Contact is saved!");
+    }
+
+    function contactError() {
+        alert('Failed because: ' + message);
+    }
+}
+
+function findContacts() {
+    var options = new ContactFindOptions();
+    options.filter = "";
+    options.multiple = true;
+    var fields = ["displayName"];
+    navigator.contacts.find(fields, contactFindSuccess, contactFindError, options);
+
+    function contactFindSuccess(contacts) {
+        for (var i=0; i<contacts.length; i++) {
+            alert("Display Name = " + contacts[i].displayName);
+        }
+    }
+
+    function contactFindError(message) {
+        alert('Failed because: ' + message);
+    }
+}
+
+function deleteContacts() {
+    var options = new ContactFindOptions();
+    options.filter = "Test User";
+    options.multiple = false;
+    var fields = ["displayName"];
+    navigator.contacts.find(fields, contactFindSuccess, contactFindError, options);
+
+    function contactFindSuccess(contacts) {
+        var contact = contacts[0];
+        contact.remove(contactRemoveSuccess, contactRemoveError);
+
+        function contactRemoveSuccess(contact) {
+            alert("Contact Deleted");
+        }
+
+        function contactRemoveError(message) {
+            alert("Contact Delete Failed because: " + message);
+        }
+    }
+
+    function contactFindError(message) {
+        alert('Contact Find Failed because: ' + message);
+    }
+}
+
+document.getElementById('createContact').addEventListener("click", createContact);
+document.getElementById('findContact').addEventListener("click", findContacts);
+document.getElementById('deleteContact').addEventListener("click", deleteContacts);
